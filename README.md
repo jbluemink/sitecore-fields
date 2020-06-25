@@ -34,4 +34,4 @@ Example for Razor view
 </code></pre>
 
 ## Download
-pick  the latest release build here ![/Sitecore Package](https://github.com/jbluemink/sitecore-fields/tree/master/Sitecore%20Package)
+Pick the latest release build here ![/Sitecore Package](https://github.com/jbluemink/sitecore-fields/tree/master/Sitecore%20Package)
