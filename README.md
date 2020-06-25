@@ -28,7 +28,7 @@ Example for Razor view
 } else
 {
   &lt;picture class="picture-component responsive lazy whatever">
-   @HtmlHelperExtensions.AdvancedImageField(Model.ID, "Image", 640, 360);
+   @Html.Sitecore().AdvancedImageField("Image", Sitecore.Context.Item,360, 640)
   &lt;/picture>
 }
 </code></pre>
