@@ -24,11 +24,11 @@ Example for Razor view
 <pre><code>
 @if (Sitecore.Context.PageMode.IsExperienceEditor)
 {
-<p>@Html.Sitecore().Field("Image", new { w = 640, h = 360 })</p>
+  &lt;p>@Html.Sitecore().Field("Image", new { w = 640, h = 360 })&lt;/p>
 } else
 {
-<picture class="picture-component responsive lazy whatever">
-<img data-src="@SitecoreExtensions.GenerateAdvancedImageFieldSrc(Model.ID, "Image", 640, 360)" class="lazyload">
-</picture>
+  &lt;picture class="picture-component responsive lazy whatever">
+   @HtmlHelperExtensions.AdvancedImageField(Model.ID, "Image", 640, 360);
+  &lt;/picture>
 }
 </code></pre>
