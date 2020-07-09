@@ -59,16 +59,21 @@ namespace Sitecore.Resources.Media
         private Stream GetCroppedImage(string extension, int width, int height, float cx, float cy, MediaItem mediaItem)
         {
             var outputStrm = new MemoryStream();
-            var mediaStrm = mediaItem.GetMediaStream();
-            var img = Image.FromStream(mediaStrm);
-            var proc = new ImageProcessor.ImageFactory();
-            proc.Load(img);
+            using (Stream mediaStrm = mediaItem.GetMediaStream())
+            {
+                var img = Image.FromStream(mediaStrm);
 
-            var axis = new float[] { cy, cx };
-            proc = proc.Resize(new ResizeLayer(new Size(width, height), ResizeMode.Crop, AnchorPosition.Center, true, centerCoordinates: axis));
-            proc.Save(outputStrm);
+                var proc = new ImageProcessor.ImageFactory();
+                proc.Load(img);
 
+                var axis = new float[] { cy, cx };
+                proc = proc.Resize(new ResizeLayer(new Size(width, height), ResizeMode.Crop, AnchorPosition.Center, true, centerCoordinates: axis));
+                proc.Save(outputStrm);
+                proc.Dispose();
+                img.Dispose();
+            }
             return outputStrm;
         }
+
     }
 }
