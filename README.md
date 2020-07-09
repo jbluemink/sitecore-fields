@@ -21,13 +21,17 @@ A slider field allowing author to select value from within the defined range.
 # Support for Sitecore Experience Editor.
 Example for Razor view
 
+<pre><code>
 @if (Sitecore.Context.PageMode.IsExperienceEditor)
 {
-<p>Html.Sitecore().Field("Image", new { w = 640, h = 360 })</p>
+  &lt;p>@Html.Sitecore().Field("Image", new { w = 640, h = 360 })&lt;/p>
 } else
 {
-<picture class="picture-component responsive lazy whatever">
-<img data-src="@SitecoreExtensions.GenerateAdvancedImageFieldSrc(Model.ID, "Image", 640, 360)" class="lazyload">
-</picture>
+  &lt;picture class="picture-component responsive lazy whatever">
+   @Html.Sitecore().AdvancedImageField("Image", Sitecore.Context.Item,360, 640)
+  &lt;/picture>
 }
+</code></pre>
 
+## Download
+Pick the latest release build here ![/Sitecore Package](https://github.com/jbluemink/sitecore-fields/tree/master/Sitecore%20Package)
